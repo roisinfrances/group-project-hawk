@@ -11,9 +11,7 @@ const {v4: uuidv4} = require('uuid');
 const { Event } = require('../models/event');
 const { User } = require('../models/user');
 
-mongoose.connect('mongodb+srv://dbUser:Password@hawk-project.eqbjo.mongodb.net/hawkdb?retryWrites=true&w=majority');
-
-// defining the Express app
+mongoose.connect('mongodb+srv://user2:PassWord@hawk-project.eqbjo.mongodb.net/hawkdb?retryWrites=true&w=majority');// defining the Express app
 const app = express();
 
 // adding Helmet to enhance your API's security
