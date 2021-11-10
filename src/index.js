@@ -28,30 +28,30 @@ app.use(cors());
 // adding morgan to log HTTP requests
 app.use(morgan("combined"));
 
-// app.post("/auth", async (req, res) => {
-//   const user = await User.findOne({ username: req.body.username });
-//   console.log(req.body);
-//   if (!user) {
-//     return res.sendStatus(401);
-//   }
-//   if (req.body.password !== user.password) {
-//     return res.sendStatus(403);
-//   }
+app.post("/auth", async (req, res) => {
+  const user = await User.findOne({ username: req.body.username });
+  console.log(req.body);
+  if (!user) {
+    return res.sendStatus(401);
+  }
+  if (req.body.password !== user.password) {
+    return res.sendStatus(403);
+  }
 
-//   user.token = uuidv4();
-//   await user.save();
-//   res.send({ token: user.token });
-// });
+  user.token = uuidv4();
+  await user.save();
+  res.send({ token: user.token });
+});
 
-// app.use(async (req, res, next) => {
-//   const authHeader = req.headers["authorization"];
-//   const user = await User.findOne({ token: authHeader });
-//   if (user) {
-//     next();
-//   } else {
-//     res.sendStatus(403);
-//   }
-// });
+app.use(async (req, res, next) => {
+  const authHeader = req.headers["authorization"];
+  const user = await User.findOne({ token: authHeader });
+  if (user) {
+    next();
+  } else {
+    res.sendStatus(403);
+  }
+});
 
 // defining CRUD operations
 app.get("/", async (req, res) => {
@@ -61,7 +61,7 @@ app.get("/", async (req, res) => {
 app.post("/", async (req, res) => {
   const newQuote = req.body;
   const Quote = new Quote(newQuote);
-  await quote.save();
+  await Quote.save();
   res.send({ message: "New quote inserted." });
 });
 
