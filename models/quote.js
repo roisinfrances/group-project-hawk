@@ -6,7 +6,7 @@ const quoteSchema = mongoose.Schema({
   jobDescription: String,
   productsRequired: Array,
   cost: Number,
-  date: String,
+  date: Date,
 });
 
 module.exports.Quote = mongoose.model('quote', quoteSchema, 'quote');
