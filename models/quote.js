@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const eventSchema = mongoose.Schema({
+const quoteSchema = mongoose.Schema({
   rooms: Array,
   areas: Array,
   jobDescription: String,
@@ -9,4 +9,4 @@ const eventSchema = mongoose.Schema({
   date: String,
 });
 
-module.exports.Event = mongoose.model("event", eventSchema, "event");
+module.exports.Quote = mongoose.model('quote', quoteSchema, 'quote');

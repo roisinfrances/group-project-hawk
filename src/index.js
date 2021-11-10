@@ -28,7 +28,7 @@ app.use(cors());
 // adding morgan to log HTTP requests
 app.use(morgan("combined"));
 
-app.post("/auth", async (req, res) => {
+ app.post("/auth", async (req, res) => {
   const user = await User.findOne({ username: req.body.username });
   console.log(req.body);
   if (!user) {
@@ -51,7 +51,7 @@ app.use(async (req, res, next) => {
   } else {
     res.sendStatus(403);
   }
-});
+}); 
 
 // defining CRUD operations
 app.get("/", async (req, res) => {
@@ -60,8 +60,8 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res) => {
   const newQuote = req.body;
-  const Quote = new Quote(newQuote);
-  await Quote.save();
+  const quote = new Quote(newQuote);
+  await quote.save();
   res.send({ message: "New quote inserted." });
 });
 
