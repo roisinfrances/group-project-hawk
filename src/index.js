@@ -40,7 +40,7 @@ app.use(morgan("combined"));
 
   user.token = uuidv4();
   await user.save();
-  res.send({ token: user.token });
+  res.send({ token: user.token, role: user.role });
 });
 
 app.use(async (req, res, next) => {
